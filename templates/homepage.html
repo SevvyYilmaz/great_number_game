@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+</head>
+
+<body>
+    <h1>Welcome to the Great Number Game!!!</h1>
+    <h4>I picked a number between 1 and 100</h4>
+
+    <div class="box">
+        <p>Take a guess here!!! </p>
+        <form action="/guess" method="post">
+            <label for="number"></label>
+            <input type="number" name="number">
+            <input type="submit" value="guess"> <!-- why do we add a value here -->
+        </form>
+    </div>
+    <div class="logic">
+
+        {% if "guessed_number" in session %}
+            {% if session['guessed_number'] > session['secret_number'] %}
+                <p>Your guess is to high </p>
+
+            {% elif session['guessed_number'] < session['secret_number'] %} 
+                <p>Your guess is to low </p>
+
+            {% else %}
+                <p>You ARE CORRECT, CONGRATS</p>
+
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+
+</html>
